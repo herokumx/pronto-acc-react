@@ -1,73 +1,71 @@
-const RESTAURANTS = [
-  { name: "Sushi Kai", cuisine: "Japanese", rating: 4.8, emoji: "🍣" },
-  { name: "Bella Italia", cuisine: "Italian", rating: 4.6, emoji: "🍝" },
-  { name: "The Burger Shed", cuisine: "American", rating: 4.5, emoji: "🍔" },
-  { name: "Spice Garden", cuisine: "Indian", rating: 4.7, emoji: "🍛" },
-];
+import { PRODUCTS, HELP_TOPICS } from "./catalog.js";
 
-const HELP_TOPICS = [
-  { icon: "📦", label: "Missing items" },
-  { icon: "⏰", label: "Order late" },
-  { icon: "💳", label: "Refund" },
-];
+const badgeLabel = { b2c: "Individual", b2b: "Business", both: "Both" };
 
-function RestaurantCard({ r, showReorder }) {
+function ProductCard({ p }) {
   return (
     <div
       style={{
-        border: "1px solid #eee",
-        borderRadius: 12,
-        padding: 16,
-        background: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        gap: 8,
-        minWidth: 180,
+        background: "var(--panel)",
+        border: "1px solid var(--panel-border)",
+        overflow: "hidden",
       }}
     >
-      <div
-        style={{
-          background: "#fdeee9",
-          borderRadius: 8,
-          height: 64,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 28,
-        }}
-      >
-        {r.emoji}
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-        <div>
-          <div style={{ fontWeight: 700 }}>{r.name}</div>
-          <div style={{ color: "var(--pronto-link)", fontSize: 13 }}>{r.cuisine}</div>
-          <div style={{ fontSize: 13 }}>⭐ {r.rating}</div>
+      <img
+        src={p.image}
+        alt={p.name}
+        style={{ width: "100%", height: 150, objectFit: "cover", display: "block" }}
+      />
+      <div style={{ padding: "12px 14px 14px" }}>
+        <div
+          style={{
+            color: "var(--gold)",
+            fontSize: 11,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: 0.6,
+          }}
+        >
+          {p.restaurant}
         </div>
-        {showReorder && (
-          <button
+        <div style={{ fontWeight: 700, fontSize: 15, margin: "4px 0 2px" }}>{p.name}</div>
+        {p.minNote && <div style={{ fontSize: 12, color: "var(--muted)" }}>{p.minNote}</div>}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: 8,
+          }}
+        >
+          <span style={{ fontWeight: 800, fontSize: 15 }}>{p.priceLabel}</span>
+          <span
             style={{
-              border: "1px solid #e2734a",
-              color: "#e2734a",
-              background: "transparent",
-              borderRadius: 16,
-              padding: "4px 12px",
-              fontSize: 13,
+              fontSize: 10,
               fontWeight: 700,
-              cursor: "pointer",
+              padding: "3px 8px",
+              textTransform: "uppercase",
+              border: "1px solid",
+              borderColor:
+                p.channel === "b2c" ? "var(--gold)" : p.channel === "b2b" ? "var(--red)" : "var(--muted)",
+              color:
+                p.channel === "b2c" ? "var(--gold)" : p.channel === "b2b" ? "var(--red)" : "var(--muted)",
             }}
           >
-            Reorder
-          </button>
-        )}
+            {badgeLabel[p.channel]}
+          </span>
+        </div>
       </div>
     </div>
   );
 }
 
 export default function Storefront({ userName = "there" }) {
+  const individual = PRODUCTS.filter((p) => p.channel === "b2c" || p.channel === "both");
+  const bulk = PRODUCTS.filter((p) => p.channel === "b2b" || p.channel === "both");
+
   return (
-    <div style={{ background: "#fdf3f0", minHeight: "calc(100vh - 64px)", padding: "24px 32px" }}>
+    <div style={{ background: "var(--bg)", minHeight: "calc(100vh - 64px)", padding: "24px 32px" }}>
       <div
         style={{
           display: "flex",
@@ -77,87 +75,192 @@ export default function Storefront({ userName = "there" }) {
           marginBottom: 20,
         }}
       >
-        <span>Hi, {userName} 👋</span>
+        <span style={{ color: "var(--muted)" }}>Hi, {userName}</span>
         <span
           style={{
-            background: "#f5dfa0",
-            borderRadius: 16,
+            background: "var(--gold)",
+            color: "#1a1a1a",
+            borderRadius: 2,
             padding: "4px 12px",
             fontWeight: 700,
-            fontSize: 13,
+            fontSize: 12,
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
           }}
         >
-          Gold ⭐
+          Gold Tier
         </span>
       </div>
 
       <div
         style={{
-          background: "#fff",
-          borderLeft: "4px solid #e2734a",
-          borderRadius: 12,
+          background: "var(--panel)",
+          border: "1px solid var(--panel-border)",
+          borderLeft: "4px solid var(--red)",
           padding: 20,
           marginBottom: 32,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <strong>Your Pronto Rewards</strong>
-          <a href="#" style={{ color: "#e2734a", fontSize: 13, textDecoration: "none" }}>
-            View history
-          </a>
+        <div>
+          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+            <span
+              style={{
+                background: "var(--gold)",
+                color: "#1a1a1a",
+                borderRadius: 2,
+                padding: "2px 10px",
+                fontWeight: 700,
+                fontSize: 12,
+                textTransform: "uppercase",
+              }}
+            >
+              Gold Tier
+            </span>
+            <strong>340 pts balance</strong>
+          </div>
+          <div style={{ background: "#2a2222", height: 6, width: 220, marginTop: 8 }}>
+            <div style={{ background: "var(--red)", width: "68%", height: "100%" }} />
+          </div>
+          <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 6 }}>
+            160 points to Platinum.
+          </div>
         </div>
-        <div style={{ margin: "10px 0", display: "flex", gap: 10, alignItems: "center" }}>
-          <span
-            style={{
-              background: "#f5dfa0",
-              borderRadius: 16,
-              padding: "2px 10px",
-              fontWeight: 700,
-              fontSize: 13,
-            }}
-          >
-            Gold ⭐
-          </span>
-          <span style={{ fontWeight: 700 }}>340 pts balance</span>
-        </div>
-        <div style={{ background: "#fbe0d6", borderRadius: 8, height: 8, overflow: "hidden" }}>
-          <div style={{ background: "#e2734a", width: "68%", height: "100%" }} />
-        </div>
-        <div style={{ fontSize: 13, marginTop: 6, color: "#666" }}>160 points to Platinum.</div>
+        <a
+          href="#"
+          style={{
+            color: "var(--red)",
+            fontSize: 13,
+            textDecoration: "none",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
+          }}
+        >
+          View History →
+        </a>
       </div>
 
-      <h3>Deals picked for you</h3>
-      <div style={{ display: "flex", gap: 16, marginBottom: 32, flexWrap: "wrap" }}>
-        {RESTAURANTS.map((r) => (
-          <RestaurantCard key={r.name} r={r} />
+      <div
+        style={{
+          background: "var(--panel)",
+          border: "1px solid var(--panel-border)",
+          padding: "16px 20px",
+          marginBottom: 32,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <strong>Ordering for a team or event?</strong>
+          <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 4 }}>
+            Switch to a Pronto for Business account for group ordering, centralized billing, and
+            spend limits.
+          </div>
+        </div>
+        <a
+          href="#"
+          style={{
+            color: "#1a1a1a",
+            background: "var(--gold)",
+            fontSize: 13,
+            textDecoration: "none",
+            fontWeight: 700,
+            padding: "8px 16px",
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
+            whiteSpace: "nowrap",
+          }}
+        >
+          Switch to Business Account
+        </a>
+      </div>
+
+      <h2
+        style={{
+          fontSize: 18,
+          textTransform: "uppercase",
+          letterSpacing: 1,
+          color: "var(--gold)",
+          borderLeft: "3px solid var(--red)",
+          paddingLeft: 10,
+          marginBottom: 14,
+        }}
+      >
+        Individual Favorites
+      </h2>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+          gap: 18,
+          marginBottom: 34,
+        }}
+      >
+        {individual.map((p) => (
+          <ProductCard key={p.id} p={p} />
         ))}
       </div>
 
-      <h3>Your favourites</h3>
-      <div style={{ display: "flex", gap: 16, marginBottom: 32, flexWrap: "wrap" }}>
-        {RESTAURANTS.slice(0, 3).map((r) => (
-          <RestaurantCard key={r.name} r={r} showReorder />
+      <h2
+        style={{
+          fontSize: 18,
+          textTransform: "uppercase",
+          letterSpacing: 1,
+          color: "var(--gold)",
+          borderLeft: "3px solid var(--red)",
+          paddingLeft: 10,
+          marginBottom: 14,
+        }}
+      >
+        Feeding a Group? Order for the Office.
+      </h2>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+          gap: 18,
+          marginBottom: 34,
+        }}
+      >
+        {bulk.map((p) => (
+          <ProductCard key={p.id} p={p} />
         ))}
       </div>
 
-      <h3>What do you need help with?</h3>
-      <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+      <h2
+        style={{
+          fontSize: 18,
+          textTransform: "uppercase",
+          letterSpacing: 1,
+          color: "var(--gold)",
+          borderLeft: "3px solid var(--red)",
+          paddingLeft: 10,
+          marginBottom: 14,
+        }}
+      >
+        What Do You Need Help With?
+      </h2>
+      <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
         {HELP_TOPICS.map((t) => (
           <div
             key={t.label}
             style={{
-              border: "1px solid #eee",
-              borderRadius: 12,
-              padding: "16px 24px",
-              background: "#fff",
+              background: "var(--panel)",
+              border: "1px solid var(--panel-border)",
+              padding: "14px 20px",
               display: "flex",
               alignItems: "center",
-              gap: 12,
-              minWidth: 180,
+              gap: 10,
+              fontWeight: 600,
+              minWidth: 170,
             }}
           >
             <span style={{ fontSize: 20 }}>{t.icon}</span>
-            <span style={{ fontWeight: 600 }}>{t.label}</span>
+            <span>{t.label}</span>
           </div>
         ))}
       </div>

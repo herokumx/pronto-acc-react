@@ -1,11 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700;800&display=swap");
 
 :root {
-  --pronto-action: #088756; /* real ActionColor from the Pronto Help Center branding set */
-  --pronto-link: #0176d3;
-  --pronto-header-bg: #1c161c;
-  --pronto-text: rgba(0, 0, 0, 0.8);
-  --pronto-bg: #ffffff;
+  /* Theme B — Japanese Red & Black */
+  --red: #c8102e;
+  --red-dark: #8f0b20;
+  --gold: #d4af37;
+  --bg: #141212;
+  --panel: #1e1a1a;
+  --panel-border: #322a2a;
+  --text: #f2ece4;
+  --muted: #b5aaa0;
+
+  /* kept for the login screen's lighter backdrop */
+  --action: var(--red);
 }
 
 * {
@@ -15,8 +22,8 @@
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
-  color: var(--pronto-text);
-  background: var(--pronto-bg);
+  color: var(--text);
+  background: var(--bg);
 }
 
 h1,

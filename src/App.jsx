@@ -21,16 +21,31 @@ export default function App() {
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <header
         style={{
-          background: "var(--pronto-header-bg)",
+          background: "#000",
+          borderBottom: "2px solid var(--red)",
           padding: "16px 24px",
           display: "flex",
           alignItems: "center",
           gap: 12,
         }}
       >
-        <img src="/pronto-logo.png" alt="Pronto" style={{ height: 32 }} />
-        <span style={{ color: "#fff", fontFamily: "Montserrat", fontWeight: 700, fontSize: 20 }}>
-          Pronto Help
+        {/* Placeholder logo — a redesigned mark is in progress, matches the food/catering theme */}
+        <img
+          src="/pronto-logo.png"
+          alt="Pronto"
+          style={{ height: 32, filter: "brightness(0) invert(1)" }}
+        />
+        <span
+          style={{
+            color: "#fff",
+            fontFamily: "Montserrat",
+            fontWeight: 800,
+            fontSize: 20,
+            textTransform: "uppercase",
+            letterSpacing: 1,
+          }}
+        >
+          Pronto
         </span>
       </header>
 
@@ -48,24 +63,27 @@ export default function App() {
               alignItems: "center",
               justifyContent: "center",
               minHeight: "calc(100vh - 64px)",
-              background: "#fdf3f0",
+              background: "var(--bg)",
               textAlign: "center",
             }}
           >
             <div>
-              <h1>Chat with Casey</h1>
-              <p>Pronto Food Delivery's virtual assistant, powered by Agentforce.</p>
+              <h1 style={{ color: "var(--gold)" }}>Chat with Casey</h1>
+              <p style={{ color: "var(--muted)" }}>
+                Pronto Food Delivery's virtual assistant, powered by Agentforce.
+              </p>
               <a
                 href="/auth/login"
                 style={{
                   display: "inline-block",
                   marginTop: 12,
                   padding: "10px 24px",
-                  background: "var(--pronto-action)",
+                  background: "var(--red)",
                   color: "#fff",
-                  borderRadius: 24,
                   textDecoration: "none",
                   fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.5,
                 }}
               >
                 Log in with Salesforce
