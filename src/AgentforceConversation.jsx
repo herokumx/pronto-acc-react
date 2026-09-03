@@ -53,8 +53,10 @@ export default function AgentforceConversation({
           agentforceClientConfig: {
             agentId,
             agentLabel,
+            floatingButtonLabel: mode === "floating" ? "Need Help?" : undefined,
+            floatingButtonIcon: mode === "floating" ? "" : undefined,
             floatingButtonImage: mode === "floating" ? iconUrl : undefined,
-            floatingButtonImageAlt: mode === "floating" ? "Chat with Casey" : undefined,
+            floatingButtonImageAlt: mode === "floating" ? "Pronto" : undefined,
             renderingConfig:
               mode === "floating"
                 ? { mode: "floating", styleTokens: brandingTokens, ...brandingImages }
