@@ -2,13 +2,13 @@
 
 :root {
   /* Structure (layered glow + grid + glass panels) reproduced from the real Stratis site
-     (preview--structure-buddy-28.lovable.app). Hue is ours, not theirs: warm red/orange —
-     tuna-sashimi red, not their purple — softer than our first attempt so it keeps contrast
-     against near-black instead of getting lost like flat #C8102E did. */
+     (preview--structure-buddy-28.lovable.app). Palette is orange + white throughout, no red —
+     two orange tones (amber "primary" for headings/labels, vivid "cta" for anything actionable)
+     so Individual-vs-Business badges stay visually distinguishable, plus near-black + white. */
   --background: #0d0b12;
   --foreground: #fff2ff;
-  --primary: #e2635a; /* tuna red — headings, restaurant labels, section rules */
-  --accent: #e8a15c; /* warm orange — secondary accents */
+  --primary: #f0983d; /* amber orange — headings, restaurant labels, Individual badges, Gold Tier fill */
+  --accent: #e8a15c; /* warm orange — secondary accents (largely superseded by cta) */
   --cta: #ff7a3d; /* vivid pop orange — buttons/links/anything actionable, white text on top */
   --card: #16131e;
   --secondary: #221d2f;
@@ -19,7 +19,7 @@
   --bg: var(--background);
   --panel: rgba(22, 19, 30, 0.6);
   --panel-solid: var(--card);
-  --panel-border: rgba(60, 44, 44, 0.7);
+  --panel-border: rgba(63, 48, 36, 0.7);
   --text: var(--foreground);
   --muted: var(--muted-foreground);
   --gold: var(--primary);
@@ -40,9 +40,9 @@ body {
   font-family: "Inter Tight", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(ellipse 900px 520px at 18% -8%, rgba(226, 99, 90, 0.2), transparent 60%),
-    radial-gradient(ellipse 700px 460px at 88% 12%, rgba(232, 161, 92, 0.15), transparent 60%),
-    radial-gradient(ellipse 1000px 700px at 50% 100%, rgba(226, 99, 90, 0.09), transparent 65%),
+    radial-gradient(ellipse 900px 520px at 18% -8%, rgba(255, 122, 61, 0.2), transparent 60%),
+    radial-gradient(ellipse 700px 460px at 88% 12%, rgba(240, 152, 61, 0.15), transparent 60%),
+    radial-gradient(ellipse 1000px 700px at 50% 100%, rgba(255, 122, 61, 0.09), transparent 65%),
     repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.025) 0px,
