@@ -7,6 +7,7 @@ import "dotenv/config";
 import express from "express";
 import session from "express-session";
 import path from "path";
+import crypto from "crypto";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -35,15 +36,29 @@ function baseUrl(req) {
   return APP_URL || `${req.protocol}://${req.get("host")}`;
 }
 
+// PKCE (RFC 7636) — required because our ECA's Security settings have "Require Proof Key for
+// Code Exchange" checked. Without this, /authorize rejects with "missing required code challenge".
+function base64url(buffer) {
+  return buffer.toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
 // Step 1: kick off the OAuth Web Server Flow.
 app.get("/auth/login", (req, res) => {
+  const codeVerifier = base64url(crypto.randomBytes(32));
+  const codeChallenge = base64url(crypto.createHash("sha256").update(codeVerifier).digest());
+  req.session.codeVerifier = codeVerifier;
+
   const redirectUri = `${baseUrl(req)}/auth/callback`;
   const authorizeUrl = new URL(`${SF_LOGIN_URL}/services/oauth2/authorize`);
   authorizeUrl.searchParams.set("response_type", "code");
   authorizeUrl.searchParams.set("client_id", SF_CLIENT_ID);
   authorizeUrl.searchParams.set("redirect_uri", redirectUri);
   authorizeUrl.searchParams.set("scope", "api id web refresh_token");
-  res.redirect(authorizeUrl.toString());
+  authorizeUrl.searchParams.set("code_challenge", codeChallenge);
+  authorizeUrl.searchParams.set("code_challenge_method", "S256");
+
+  // req.session.codeVerifier must be persisted before the redirect fires.
+  req.session.save(() => res.redirect(authorizeUrl.toString()));
 });
 
 // Step 2: exchange the authorization code for an access token + instance URL.
@@ -61,6 +76,7 @@ app.get("/auth/callback", async (req, res) => {
       client_id: SF_CLIENT_ID,
       client_secret: SF_CLIENT_SECRET,
       redirect_uri: redirectUri,
+      code_verifier: req.session.codeVerifier || "",
     }),
   });
 
