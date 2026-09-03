@@ -74,7 +74,7 @@ export default function Storefront({ userName = "there" }) {
           style={{
             background: "var(--primary)",
             color: "#1a1a1a",
-            borderRadius: 2,
+            borderRadius: 8,
             padding: "4px 12px",
             fontWeight: 700,
             fontSize: 12,
@@ -103,7 +103,7 @@ export default function Storefront({ userName = "there" }) {
               style={{
                 background: "var(--primary)",
                 color: "#1a1a1a",
-                borderRadius: 2,
+                borderRadius: 8,
                 padding: "2px 10px",
                 fontWeight: 700,
                 fontSize: 12,
@@ -165,6 +165,7 @@ export default function Storefront({ userName = "there" }) {
             textTransform: "uppercase",
             letterSpacing: 0.5,
             whiteSpace: "nowrap",
+            borderRadius: 8,
           }}
         >
           Switch to Business Account

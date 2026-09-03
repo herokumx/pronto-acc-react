@@ -88,6 +88,7 @@ export default function App() {
                   fontWeight: 700,
                   textTransform: "uppercase",
                   letterSpacing: 0.5,
+                  borderRadius: 8,
                 }}
               >
                 Log in with Salesforce
