@@ -21,12 +21,17 @@ export default function App() {
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <header
         style={{
-          background: "#000",
-          borderBottom: "2px solid var(--red)",
+          background: "rgba(0, 0, 0, 0.55)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+          borderBottom: "1px solid var(--panel-border)",
           padding: "16px 24px",
           display: "flex",
           alignItems: "center",
           gap: 12,
+          position: "sticky",
+          top: 0,
+          zIndex: 10,
         }}
       >
         {/* Placeholder logo — a redesigned mark is in progress, matches the food/catering theme */}
@@ -63,7 +68,6 @@ export default function App() {
               alignItems: "center",
               justifyContent: "center",
               minHeight: "calc(100vh - 64px)",
-              background: "var(--bg)",
               textAlign: "center",
             }}
           >

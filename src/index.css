@@ -1,13 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700;800&display=swap");
 
 :root {
-  /* Theme B — Japanese Red & Black */
+  /* Theme B — Japanese Red & Black, with depth: warm radial glows over near-black
+     instead of flat black (reference: Stratis marketing site). */
   --red: #c8102e;
   --red-dark: #8f0b20;
   --gold: #d4af37;
   --bg: #141212;
-  --panel: #1e1a1a;
-  --panel-border: #322a2a;
+  --panel: rgba(30, 24, 24, 0.55);
+  --panel-solid: #1e1a1a;
+  --panel-border: rgba(212, 175, 55, 0.14);
   --text: #f2ece4;
   --muted: #b5aaa0;
 
@@ -19,11 +21,42 @@
   box-sizing: border-box;
 }
 
+html {
+  background: var(--bg);
+}
+
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 900px 520px at 18% -8%, rgba(200, 16, 46, 0.22), transparent 60%),
+    radial-gradient(ellipse 700px 460px at 88% 12%, rgba(212, 175, 55, 0.12), transparent 60%),
+    radial-gradient(ellipse 1000px 700px at 50% 100%, rgba(200, 16, 46, 0.1), transparent 65%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 48px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 48px
+    ),
+    linear-gradient(180deg, #191414 0%, #0f0d0d 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.glass-panel {
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--panel-border);
 }
 
 h1,

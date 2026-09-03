@@ -4,13 +4,7 @@ const badgeLabel = { b2c: "Individual", b2b: "Business", both: "Both" };
 
 function ProductCard({ p }) {
   return (
-    <div
-      style={{
-        background: "var(--panel)",
-        border: "1px solid var(--panel-border)",
-        overflow: "hidden",
-      }}
-    >
+    <div className="glass-panel" style={{ overflow: "hidden" }}>
       <img
         src={p.image}
         alt={p.name}
@@ -65,7 +59,7 @@ export default function Storefront({ userName = "there" }) {
   const bulk = PRODUCTS.filter((p) => p.channel === "b2b" || p.channel === "both");
 
   return (
-    <div style={{ background: "var(--bg)", minHeight: "calc(100vh - 64px)", padding: "24px 32px" }}>
+    <div style={{ minHeight: "calc(100vh - 64px)", padding: "24px 32px" }}>
       <div
         style={{
           display: "flex",
@@ -93,9 +87,8 @@ export default function Storefront({ userName = "there" }) {
       </div>
 
       <div
+        className="glass-panel"
         style={{
-          background: "var(--panel)",
-          border: "1px solid var(--panel-border)",
           borderLeft: "4px solid var(--red)",
           padding: 20,
           marginBottom: 32,
@@ -144,9 +137,8 @@ export default function Storefront({ userName = "there" }) {
       </div>
 
       <div
+        className="glass-panel"
         style={{
-          background: "var(--panel)",
-          border: "1px solid var(--panel-border)",
           padding: "16px 20px",
           marginBottom: 32,
           display: "flex",
@@ -248,9 +240,8 @@ export default function Storefront({ userName = "there" }) {
         {HELP_TOPICS.map((t) => (
           <div
             key={t.label}
+            className="glass-panel"
             style={{
-              background: "var(--panel)",
-              border: "1px solid var(--panel-border)",
               padding: "14px 20px",
               display: "flex",
               alignItems: "center",
