@@ -7,9 +7,10 @@
      so Individual-vs-Business badges stay visually distinguishable, plus near-black + white. */
   --background: #0d0b12;
   --foreground: #fff2ff;
-  --primary: #f0983d; /* amber orange — headings, restaurant labels, Individual badges, Gold Tier fill */
+  --primary: #f0983d; /* amber orange — headings, restaurant labels, Individual badges */
   --accent: #e8a15c; /* warm orange — secondary accents (largely superseded by cta) */
   --cta: #ff7a3d; /* vivid pop orange — buttons/links/anything actionable, white text on top */
+  --silver: #c7cad1; /* real Pronto Rewards Silver tier — metallic gray, dark text on top */
   --card: #16131e;
   --secondary: #221d2f;
   --border: #3c2c2c;

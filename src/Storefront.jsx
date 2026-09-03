@@ -96,7 +96,7 @@ export default function Storefront({ userName = "there" }) {
         <span style={{ color: "var(--muted)" }}>Hi, {userName}</span>
         <span
           style={{
-            background: "var(--primary)",
+            background: "var(--silver)",
             color: "#1a1a1a",
             borderRadius: 8,
             padding: "4px 12px",
@@ -106,7 +106,7 @@ export default function Storefront({ userName = "there" }) {
             letterSpacing: 0.5,
           }}
         >
-          Gold Tier
+          Silver Tier
         </span>
       </div>
 
@@ -125,7 +125,7 @@ export default function Storefront({ userName = "there" }) {
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
             <span
               style={{
-                background: "var(--primary)",
+                background: "var(--silver)",
                 color: "#1a1a1a",
                 borderRadius: 8,
                 padding: "2px 10px",
@@ -134,7 +134,7 @@ export default function Storefront({ userName = "there" }) {
                 textTransform: "uppercase",
               }}
             >
-              Gold Tier
+              Silver Tier
             </span>
             <strong>340 pts balance</strong>
           </div>
@@ -142,7 +142,7 @@ export default function Storefront({ userName = "there" }) {
             <div style={{ background: "var(--cta)", width: "68%", height: "100%" }} />
           </div>
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 6 }}>
-            160 points to Platinum.
+            160 points to Gold.
           </div>
         </div>
         <a
