@@ -22,8 +22,11 @@ export default function AgentforceConversation({
     // publicly reachable — a relative path won't resolve from inside that iframe. Deriving from
     // window.location.origin (rather than hardcoding our own Heroku URL) means this works
     // automatically for any learner's own deployed app too.
+    // PNG, not SVG: our SVG has no explicit width/height (viewBox-only), which the SDK's own
+    // image-substitution appears not to size correctly (icon silently fell back to default).
+    // A raster PNG has unambiguous intrinsic dimensions.
     const origin = window.location.origin;
-    const iconUrl = `${origin}/pronto-icon.svg`;
+    const iconUrl = `${origin}/pronto-icon.png`;
 
     const brandingTokens = {
       headerBlockBackground: "#ff7a3d",
