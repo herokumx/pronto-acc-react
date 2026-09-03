@@ -29,8 +29,8 @@ export default function AgentforceConversation({
             ? {
                 mode: "floating",
                 styleTokens: {
-                  headerBlockBackground: "#c8102e",
-                  headerBlockTextColor: "#ffffff",
+                  headerBlockBackground: "#9b85d6",
+                  headerBlockTextColor: "#1a1120",
                 },
               }
             : {
@@ -38,8 +38,8 @@ export default function AgentforceConversation({
                 width: "100%",
                 height: "600px",
                 styleTokens: {
-                  headerBlockBackground: "#c8102e",
-                  headerBlockTextColor: "#ffffff",
+                  headerBlockBackground: "#9b85d6",
+                  headerBlockTextColor: "#1a1120",
                 },
               },
       },

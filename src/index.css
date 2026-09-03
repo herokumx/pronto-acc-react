@@ -1,20 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap");
 
 :root {
-  /* Theme B — Japanese Red & Black, with depth: warm radial glows over near-black
-     instead of flat black (reference: Stratis marketing site). */
-  --red: #c8102e;
-  --red-dark: #8f0b20;
-  --gold: #d4af37;
-  --bg: #141212;
-  --panel: rgba(30, 24, 24, 0.55);
-  --panel-solid: #1e1a1a;
-  --panel-border: rgba(212, 175, 55, 0.14);
-  --text: #f2ece4;
-  --muted: #b5aaa0;
+  /* Reproduced from the real Stratis site's Tailwind design tokens
+     (preview--structure-buddy-28.lovable.app) — not invented. */
+  --background: #0d0b12;
+  --foreground: #fff2ff;
+  --primary: #9b85d6; /* their "gold" token — actually a soft lavender-purple */
+  --accent: #8fa7ff; /* soft blue */
+  --card: #16131e;
+  --secondary: #221d2f;
+  --border: #342c4c;
+  --muted-foreground: #b6adcd;
 
-  /* kept for the login screen's lighter backdrop */
-  --action: var(--red);
+  /* app aliases */
+  --bg: var(--background);
+  --panel: rgba(22, 19, 30, 0.6);
+  --panel-solid: var(--card);
+  --panel-border: rgba(52, 44, 76, 0.7);
+  --text: var(--foreground);
+  --muted: var(--muted-foreground);
+  --gold: var(--primary);
+  --red: var(--accent); /* kept as an alias so existing "brand action" usages still work */
+  --action: var(--primary);
 }
 
 * {
@@ -27,12 +34,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(ellipse 900px 520px at 18% -8%, rgba(200, 16, 46, 0.22), transparent 60%),
-    radial-gradient(ellipse 700px 460px at 88% 12%, rgba(212, 175, 55, 0.12), transparent 60%),
-    radial-gradient(ellipse 1000px 700px at 50% 100%, rgba(200, 16, 46, 0.1), transparent 65%),
+    radial-gradient(ellipse 900px 520px at 18% -8%, rgba(155, 133, 214, 0.18), transparent 60%),
+    radial-gradient(ellipse 700px 460px at 88% 12%, rgba(143, 167, 255, 0.14), transparent 60%),
+    radial-gradient(ellipse 1000px 700px at 50% 100%, rgba(155, 133, 214, 0.08), transparent 65%),
     repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.025) 0px,
@@ -47,9 +54,15 @@ body {
       transparent 1px,
       transparent 48px
     ),
-    linear-gradient(180deg, #191414 0%, #0f0d0d 100%);
+    var(--background);
   background-attachment: fixed;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Inter Tight", sans-serif;
 }
 
 .glass-panel {
@@ -57,10 +70,5 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--panel-border);
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Montserrat", sans-serif;
+  border-radius: 12px;
 }

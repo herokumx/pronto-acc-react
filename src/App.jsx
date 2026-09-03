@@ -72,7 +72,7 @@ export default function App() {
             }}
           >
             <div>
-              <h1 style={{ color: "var(--gold)" }}>Chat with Casey</h1>
+              <h1 style={{ color: "var(--primary)" }}>Chat with Casey</h1>
               <p style={{ color: "var(--muted)" }}>
                 Pronto Food Delivery's virtual assistant, powered by Agentforce.
               </p>
@@ -82,7 +82,7 @@ export default function App() {
                   display: "inline-block",
                   marginTop: 12,
                   padding: "10px 24px",
-                  background: "var(--red)",
+                  background: "var(--accent)",
                   color: "#fff",
                   textDecoration: "none",
                   fontWeight: 700,

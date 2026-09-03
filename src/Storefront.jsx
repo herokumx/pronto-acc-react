@@ -13,7 +13,7 @@ function ProductCard({ p }) {
       <div style={{ padding: "12px 14px 14px" }}>
         <div
           style={{
-            color: "var(--gold)",
+            color: "var(--primary)",
             fontSize: 11,
             fontWeight: 700,
             textTransform: "uppercase",
@@ -41,9 +41,9 @@ function ProductCard({ p }) {
               textTransform: "uppercase",
               border: "1px solid",
               borderColor:
-                p.channel === "b2c" ? "var(--gold)" : p.channel === "b2b" ? "var(--red)" : "var(--muted)",
+                p.channel === "b2c" ? "var(--primary)" : p.channel === "b2b" ? "var(--accent)" : "var(--muted)",
               color:
-                p.channel === "b2c" ? "var(--gold)" : p.channel === "b2b" ? "var(--red)" : "var(--muted)",
+                p.channel === "b2c" ? "var(--primary)" : p.channel === "b2b" ? "var(--accent)" : "var(--muted)",
             }}
           >
             {badgeLabel[p.channel]}
@@ -72,7 +72,7 @@ export default function Storefront({ userName = "there" }) {
         <span style={{ color: "var(--muted)" }}>Hi, {userName}</span>
         <span
           style={{
-            background: "var(--gold)",
+            background: "var(--primary)",
             color: "#1a1a1a",
             borderRadius: 2,
             padding: "4px 12px",
@@ -89,7 +89,7 @@ export default function Storefront({ userName = "there" }) {
       <div
         className="glass-panel"
         style={{
-          borderLeft: "4px solid var(--red)",
+          borderLeft: "4px solid var(--accent)",
           padding: 20,
           marginBottom: 32,
           display: "flex",
@@ -101,7 +101,7 @@ export default function Storefront({ userName = "there" }) {
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
             <span
               style={{
-                background: "var(--gold)",
+                background: "var(--primary)",
                 color: "#1a1a1a",
                 borderRadius: 2,
                 padding: "2px 10px",
@@ -115,7 +115,7 @@ export default function Storefront({ userName = "there" }) {
             <strong>340 pts balance</strong>
           </div>
           <div style={{ background: "#2a2222", height: 6, width: 220, marginTop: 8 }}>
-            <div style={{ background: "var(--red)", width: "68%", height: "100%" }} />
+            <div style={{ background: "var(--accent)", width: "68%", height: "100%" }} />
           </div>
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 6 }}>
             160 points to Platinum.
@@ -124,7 +124,7 @@ export default function Storefront({ userName = "there" }) {
         <a
           href="#"
           style={{
-            color: "var(--red)",
+            color: "var(--accent)",
             fontSize: 13,
             textDecoration: "none",
             fontWeight: 700,
@@ -157,7 +157,7 @@ export default function Storefront({ userName = "there" }) {
           href="#"
           style={{
             color: "#1a1a1a",
-            background: "var(--gold)",
+            background: "var(--primary)",
             fontSize: 13,
             textDecoration: "none",
             fontWeight: 700,
@@ -176,8 +176,8 @@ export default function Storefront({ userName = "there" }) {
           fontSize: 18,
           textTransform: "uppercase",
           letterSpacing: 1,
-          color: "var(--gold)",
-          borderLeft: "3px solid var(--red)",
+          color: "var(--primary)",
+          borderLeft: "3px solid var(--accent)",
           paddingLeft: 10,
           marginBottom: 14,
         }}
@@ -202,8 +202,8 @@ export default function Storefront({ userName = "there" }) {
           fontSize: 18,
           textTransform: "uppercase",
           letterSpacing: 1,
-          color: "var(--gold)",
-          borderLeft: "3px solid var(--red)",
+          color: "var(--primary)",
+          borderLeft: "3px solid var(--accent)",
           paddingLeft: 10,
           marginBottom: 14,
         }}
@@ -228,8 +228,8 @@ export default function Storefront({ userName = "there" }) {
           fontSize: 18,
           textTransform: "uppercase",
           letterSpacing: 1,
-          color: "var(--gold)",
-          borderLeft: "3px solid var(--red)",
+          color: "var(--primary)",
+          borderLeft: "3px solid var(--accent)",
           paddingLeft: 10,
           marginBottom: 14,
         }}
