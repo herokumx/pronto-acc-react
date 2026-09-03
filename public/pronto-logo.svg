@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420" role="img" aria-labelledby="title desc">
+  <title id="title">Pronto Japanese-inspired transparent horizontal logo</title>
+  <desc id="desc">A coral cloche with a centered ivory P beside an ivory geometric Pronto wordmark on transparency.</desc>
+  <g transform="translate(26 25) scale(.72)">
+    <g fill="#ff7043">
+      <path d="M82 354c8-116 77-206 174-206s166 90 174 206c-96 27-252 27-348 0Z"/>
+      <path d="M58 363c53 25 124 37 198 37s145-12 198-37v38c-55 31-126 47-198 47S113 432 58 401v-38Z"/>
+      <path d="M232 145v-11c0-15 9-25 24-25s24 10 24 25v11h-48Z"/>
+      <path d="M146 140c-27-20-26-53-5-81-2 28 27 36 21 62-2 10-8 17-16 19Z"/>
+    </g>
+    <path fill="#f8ebe6" fill-rule="evenodd" d="M183 194h93l53 34v58l-53 34h-41v46h-52V194Zm52 45v36h36l12-9v-18l-12-9h-36Z"/>
+  </g>
+  <g transform="translate(0 8)" fill="#f8ebe6" fill-rule="evenodd">
+    <path d="M420 112h79l27 24v55l-27 24h-40v81h-39V112Zm39 34v35h30l8-7v-21l-8-7h-30Z"/>
+    <path d="M552 161h36v17l18-17h39v36h-27l-30 26v73h-36V161Z"/>
+    <path d="M685 161h73l26 26v83l-26 26h-73l-26-26v-83l26-26Zm16 36-7 7v49l7 7h41l7-7v-49l-7-7h-41Z"/>
+    <path d="M810 161h36v15l17-15h55l27 26v109h-37v-92l-8-7h-36l-18 18v81h-36V161Z"/>
+    <path d="M991 122h37v39h43v36h-43v53l10 10h33v36h-49l-31-29v-70h-25v-36h25v-39Z"/>
+    <path d="M1117 161h73l26 26v83l-26 26h-73l-26-26v-83l26-26Zm16 36-7 7v49l7 7h41l7-7v-49l-7-7h-41Z"/>
+  </g>
+</svg>

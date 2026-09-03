@@ -34,24 +34,7 @@ export default function App() {
           zIndex: 10,
         }}
       >
-        {/* Placeholder logo — a redesigned mark is in progress, matches the food/catering theme */}
-        <img
-          src="/pronto-logo.png"
-          alt="Pronto"
-          style={{ height: 32, filter: "brightness(0) invert(1)" }}
-        />
-        <span
-          style={{
-            color: "#fff",
-            fontFamily: "Montserrat",
-            fontWeight: 800,
-            fontSize: 20,
-            textTransform: "uppercase",
-            letterSpacing: 1,
-          }}
-        >
-          Pronto
-        </span>
+        <img src="/pronto-logo.svg" alt="Pronto" style={{ height: 34 }} />
       </header>
 
       <main style={{ flex: 1 }}>
