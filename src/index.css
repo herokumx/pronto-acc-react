@@ -1,22 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap");
 
 :root {
-  /* Reproduced from the real Stratis site's Tailwind design tokens
-     (preview--structure-buddy-28.lovable.app) — not invented. */
+  /* Structure (layered glow + grid + glass panels) reproduced from the real Stratis site
+     (preview--structure-buddy-28.lovable.app). Hue is ours, not theirs: warm red/orange —
+     tuna-sashimi red, not their purple — softer than our first attempt so it keeps contrast
+     against near-black instead of getting lost like flat #C8102E did. */
   --background: #0d0b12;
   --foreground: #fff2ff;
-  --primary: #9b85d6; /* their "gold" token — actually a soft lavender-purple */
-  --accent: #8fa7ff; /* soft blue */
+  --primary: #e2635a; /* tuna red */
+  --accent: #e8a15c; /* warm orange */
   --card: #16131e;
   --secondary: #221d2f;
-  --border: #342c4c;
-  --muted-foreground: #b6adcd;
+  --border: #3c2c2c;
+  --muted-foreground: #cbb3ad;
 
   /* app aliases */
   --bg: var(--background);
   --panel: rgba(22, 19, 30, 0.6);
   --panel-solid: var(--card);
-  --panel-border: rgba(52, 44, 76, 0.7);
+  --panel-border: rgba(60, 44, 44, 0.7);
   --text: var(--foreground);
   --muted: var(--muted-foreground);
   --gold: var(--primary);
@@ -37,9 +39,9 @@ body {
   font-family: "Inter Tight", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(ellipse 900px 520px at 18% -8%, rgba(155, 133, 214, 0.18), transparent 60%),
-    radial-gradient(ellipse 700px 460px at 88% 12%, rgba(143, 167, 255, 0.14), transparent 60%),
-    radial-gradient(ellipse 1000px 700px at 50% 100%, rgba(155, 133, 214, 0.08), transparent 65%),
+    radial-gradient(ellipse 900px 520px at 18% -8%, rgba(226, 99, 90, 0.2), transparent 60%),
+    radial-gradient(ellipse 700px 460px at 88% 12%, rgba(232, 161, 92, 0.15), transparent 60%),
+    radial-gradient(ellipse 1000px 700px at 50% 100%, rgba(226, 99, 90, 0.09), transparent 65%),
     repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.025) 0px,
