@@ -3,7 +3,12 @@ import { embedAgentforceClient } from "@salesforce/agentforce-conversation-clien
 
 // Embeds Casey via the real Agentforce Conversation Client (ACC) SDK.
 // frontdoorUrl comes from a live, server-side OAuth session — see server.js /config.js.
-export default function AgentforceConversation({ frontdoorUrl, agentId, agentLabel }) {
+export default function AgentforceConversation({
+  frontdoorUrl,
+  agentId,
+  agentLabel,
+  mode = "inline",
+}) {
   const containerRef = useRef(null);
   const [error, setError] = useState(null);
 
@@ -19,15 +24,24 @@ export default function AgentforceConversation({ frontdoorUrl, agentId, agentLab
       agentforceClientConfig: {
         agentId,
         agentLabel,
-        renderingConfig: {
-          mode: "inline",
-          width: "100%",
-          height: "600px",
-          styleTokens: {
-            headerBlockBackground: "#088756",
-            headerBlockTextColor: "#ffffff",
-          },
-        },
+        renderingConfig:
+          mode === "floating"
+            ? {
+                mode: "floating",
+                styleTokens: {
+                  headerBlockBackground: "#088756",
+                  headerBlockTextColor: "#ffffff",
+                },
+              }
+            : {
+                mode: "inline",
+                width: "100%",
+                height: "600px",
+                styleTokens: {
+                  headerBlockBackground: "#088756",
+                  headerBlockTextColor: "#ffffff",
+                },
+              },
       },
     }).catch((err) => {
       if (!cancelled) setError(err?.message || String(err));
@@ -37,7 +51,7 @@ export default function AgentforceConversation({ frontdoorUrl, agentId, agentLab
       cancelled = true;
       container.replaceChildren();
     };
-  }, [frontdoorUrl, agentId, agentLabel]);
+  }, [frontdoorUrl, agentId, agentLabel, mode]);
 
   if (error) {
     return (
@@ -50,5 +64,12 @@ export default function AgentforceConversation({ frontdoorUrl, agentId, agentLab
     );
   }
 
-  return <div ref={containerRef} style={{ width: "100%", minHeight: 600 }} />;
+  // Floating mode injects its own fixed-position widget + FAB — the anchor div itself
+  // shouldn't reserve page space. Inline mode needs real dimensions to render into.
+  return (
+    <div
+      ref={containerRef}
+      style={mode === "floating" ? undefined : { width: "100%", minHeight: 600 }}
+    />
+  );
 }
