@@ -38,28 +38,36 @@ export default function AgentforceConversation({
       agentAvatarAltText: "Casey, Pronto's virtual assistant",
     };
 
-    embedAgentforceClient({
-      container,
-      frontdoorUrl,
-      agentforceClientConfig: {
-        agentId,
-        agentLabel,
-        floatingButtonImage: mode === "floating" ? iconUrl : undefined,
-        floatingButtonImageAlt: mode === "floating" ? "Chat with Casey" : undefined,
-        renderingConfig:
-          mode === "floating"
-            ? { mode: "floating", styleTokens: brandingTokens, ...brandingImages }
-            : {
-                mode: "inline",
-                width: "100%",
-                height: "600px",
-                styleTokens: brandingTokens,
-                ...brandingImages,
-              },
-      },
-    }).catch((err) => {
-      if (!cancelled) setError(err?.message || String(err));
-    });
+    // embedAgentforceClient doesn't reliably return a real Promise in every code path (observed:
+    // a bare "Qe(...).catch is not a function" crash with no error boundary blanks the whole
+    // React tree). Wrapping in an async IIFE + try/catch handles that regardless of what it
+    // actually returns, instead of chaining .catch directly on its result.
+    (async () => {
+      try {
+        await embedAgentforceClient({
+          container,
+          frontdoorUrl,
+          agentforceClientConfig: {
+            agentId,
+            agentLabel,
+            floatingButtonImage: mode === "floating" ? iconUrl : undefined,
+            floatingButtonImageAlt: mode === "floating" ? "Chat with Casey" : undefined,
+            renderingConfig:
+              mode === "floating"
+                ? { mode: "floating", styleTokens: brandingTokens, ...brandingImages }
+                : {
+                    mode: "inline",
+                    width: "100%",
+                    height: "600px",
+                    styleTokens: brandingTokens,
+                    ...brandingImages,
+                  },
+          },
+        });
+      } catch (err) {
+        if (!cancelled) setError(err?.message || String(err));
+      }
+    })();
 
     return () => {
       cancelled = true;
