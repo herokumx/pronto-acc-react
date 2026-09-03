@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 50 380 380" role="img" aria-label="Pronto">
+  <title>Pronto</title>
+  <g transform="translate(26 25) scale(.72)">
+    <g fill="#ff7043">
+      <path d="M82 354c8-116 77-206 174-206s166 90 174 206c-96 27-252 27-348 0Z"/>
+      <path d="M58 363c53 25 124 37 198 37s145-12 198-37v38c-55 31-126 47-198 47S113 432 58 401v-38Z"/>
+      <path d="M232 145v-11c0-15 9-25 24-25s24 10 24 25v11h-48Z"/>
+      <path d="M146 140c-27-20-26-53-5-81-2 28 27 36 21 62-2 10-8 17-16 19Z"/>
+    </g>
+    <path fill="#f8ebe6" fill-rule="evenodd" d="M183 194h93l53 34v58l-53 34h-41v46h-52V194Zm52 45v36h36l12-9v-18l-12-9h-36Z"/>
+  </g>
+</svg>

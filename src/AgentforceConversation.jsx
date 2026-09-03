@@ -18,29 +18,43 @@ export default function AgentforceConversation({
 
     let cancelled = false;
 
+    // ACC renders inside a cross-origin Salesforce iframe, so image URLs must be absolute and
+    // publicly reachable — a relative path won't resolve from inside that iframe. Deriving from
+    // window.location.origin (rather than hardcoding our own Heroku URL) means this works
+    // automatically for any learner's own deployed app too.
+    const origin = window.location.origin;
+    const iconUrl = `${origin}/pronto-icon.svg`;
+
+    const brandingTokens = {
+      headerBlockBackground: "#ff7a3d",
+      headerBlockTextColor: "#ffffff",
+    };
+    const brandingImages = {
+      showHeaderIcon: true,
+      headerImageUrl: iconUrl,
+      headerImageAlt: "Pronto",
+      showAvatar: true,
+      agentAvatarUrl: iconUrl,
+      agentAvatarAltText: "Casey, Pronto's virtual assistant",
+    };
+
     embedAgentforceClient({
       container,
       frontdoorUrl,
       agentforceClientConfig: {
         agentId,
         agentLabel,
+        floatingButtonImage: mode === "floating" ? iconUrl : undefined,
+        floatingButtonImageAlt: mode === "floating" ? "Chat with Casey" : undefined,
         renderingConfig:
           mode === "floating"
-            ? {
-                mode: "floating",
-                styleTokens: {
-                  headerBlockBackground: "#ff7a3d",
-                  headerBlockTextColor: "#ffffff",
-                },
-              }
+            ? { mode: "floating", styleTokens: brandingTokens, ...brandingImages }
             : {
                 mode: "inline",
                 width: "100%",
                 height: "600px",
-                styleTokens: {
-                  headerBlockBackground: "#ff7a3d",
-                  headerBlockTextColor: "#ffffff",
-                },
+                styleTokens: brandingTokens,
+                ...brandingImages,
               },
       },
     }).catch((err) => {
