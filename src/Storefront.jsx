@@ -1,6 +1,30 @@
+import { PackageX, PackageMinus, RefreshCcw, UtensilsCrossed, Clock } from "lucide-react";
 import { PRODUCTS, HELP_TOPICS } from "./catalog.js";
 
 const badgeLabel = { b2c: "Individual", b2b: "Business", both: "Both" };
+
+const HELP_ICONS = {
+  orderNeverArrived: PackageX,
+  missingItem: PackageMinus,
+  wrongItem: RefreshCcw,
+  foodQuality: UtensilsCrossed,
+  lateDelivery: Clock,
+};
+
+const buttonStyle = {
+  color: "#fff",
+  background: "var(--cta)",
+  fontSize: 13,
+  textDecoration: "none",
+  fontWeight: 800,
+  padding: "10px 18px",
+  textTransform: "uppercase",
+  letterSpacing: 0.6,
+  whiteSpace: "nowrap",
+  borderRadius: 8,
+  boxShadow: "0 4px 16px rgba(255, 122, 61, 0.35)",
+  display: "inline-block",
+};
 
 function ProductCard({ p }) {
   return (
@@ -41,9 +65,9 @@ function ProductCard({ p }) {
               textTransform: "uppercase",
               border: "1px solid",
               borderColor:
-                p.channel === "b2c" ? "var(--primary)" : p.channel === "b2b" ? "var(--accent)" : "var(--muted)",
+                p.channel === "b2c" ? "var(--primary)" : p.channel === "b2b" ? "var(--cta)" : "var(--muted)",
               color:
-                p.channel === "b2c" ? "var(--primary)" : p.channel === "b2b" ? "var(--accent)" : "var(--muted)",
+                p.channel === "b2c" ? "var(--primary)" : p.channel === "b2b" ? "var(--cta)" : "var(--muted)",
             }}
           >
             {badgeLabel[p.channel]}
@@ -89,7 +113,7 @@ export default function Storefront({ userName = "there" }) {
       <div
         className="glass-panel"
         style={{
-          borderLeft: "4px solid var(--accent)",
+          borderLeft: "4px solid var(--cta)",
           padding: 20,
           marginBottom: 32,
           display: "flex",
@@ -115,7 +139,7 @@ export default function Storefront({ userName = "there" }) {
             <strong>340 pts balance</strong>
           </div>
           <div style={{ background: "#2a2222", height: 6, width: 220, marginTop: 8 }}>
-            <div style={{ background: "var(--accent)", width: "68%", height: "100%" }} />
+            <div style={{ background: "var(--cta)", width: "68%", height: "100%" }} />
           </div>
           <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 6 }}>
             160 points to Platinum.
@@ -124,10 +148,10 @@ export default function Storefront({ userName = "there" }) {
         <a
           href="#"
           style={{
-            color: "var(--accent)",
+            color: "var(--cta)",
             fontSize: 13,
             textDecoration: "none",
-            fontWeight: 700,
+            fontWeight: 800,
             textTransform: "uppercase",
             letterSpacing: 0.5,
           }}
@@ -153,21 +177,7 @@ export default function Storefront({ userName = "there" }) {
             spend limits.
           </div>
         </div>
-        <a
-          href="#"
-          style={{
-            color: "#1a1a1a",
-            background: "var(--primary)",
-            fontSize: 13,
-            textDecoration: "none",
-            fontWeight: 700,
-            padding: "8px 16px",
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-            whiteSpace: "nowrap",
-            borderRadius: 8,
-          }}
-        >
+        <a href="#" style={buttonStyle}>
           Switch to Business Account
         </a>
       </div>
@@ -178,7 +188,7 @@ export default function Storefront({ userName = "there" }) {
           textTransform: "uppercase",
           letterSpacing: 1,
           color: "var(--primary)",
-          borderLeft: "3px solid var(--accent)",
+          borderLeft: "3px solid var(--cta)",
           paddingLeft: 10,
           marginBottom: 14,
         }}
@@ -204,7 +214,7 @@ export default function Storefront({ userName = "there" }) {
           textTransform: "uppercase",
           letterSpacing: 1,
           color: "var(--primary)",
-          borderLeft: "3px solid var(--accent)",
+          borderLeft: "3px solid var(--cta)",
           paddingLeft: 10,
           marginBottom: 14,
         }}
@@ -230,7 +240,7 @@ export default function Storefront({ userName = "there" }) {
           textTransform: "uppercase",
           letterSpacing: 1,
           color: "var(--primary)",
-          borderLeft: "3px solid var(--accent)",
+          borderLeft: "3px solid var(--cta)",
           paddingLeft: 10,
           marginBottom: 14,
         }}
@@ -238,23 +248,26 @@ export default function Storefront({ userName = "there" }) {
         What Do You Need Help With?
       </h2>
       <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-        {HELP_TOPICS.map((t) => (
-          <div
-            key={t.label}
-            className="glass-panel"
-            style={{
-              padding: "14px 20px",
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              fontWeight: 600,
-              minWidth: 170,
-            }}
-          >
-            <span style={{ fontSize: 20 }}>{t.icon}</span>
-            <span>{t.label}</span>
-          </div>
-        ))}
+        {HELP_TOPICS.map((t) => {
+          const Icon = HELP_ICONS[t.iconKey];
+          return (
+            <div
+              key={t.label}
+              className="glass-panel"
+              style={{
+                padding: "14px 20px",
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                fontWeight: 600,
+                minWidth: 170,
+              }}
+            >
+              <Icon size={20} color="var(--cta)" strokeWidth={2} />
+              <span>{t.label}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

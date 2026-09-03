@@ -176,9 +176,9 @@ export const PRODUCTS = [
 // Real — from the Missing & Problem Deliveries FAQ. These map to actual Report an Issue
 // categories Casey can help with, unlike the product grid above.
 export const HELP_TOPICS = [
-  { icon: "🚫", label: "Order Never Arrived" },
-  { icon: "📦", label: "Missing Item" },
-  { icon: "🔄", label: "Wrong Item" },
-  { icon: "🍽️", label: "Food Quality" },
-  { icon: "⏰", label: "Late Delivery" },
+  { iconKey: "orderNeverArrived", label: "Order Never Arrived" },
+  { iconKey: "missingItem", label: "Missing Item" },
+  { iconKey: "wrongItem", label: "Wrong Item" },
+  { iconKey: "foodQuality", label: "Food Quality" },
+  { iconKey: "lateDelivery", label: "Late Delivery" },
 ];

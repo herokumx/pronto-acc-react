@@ -82,13 +82,14 @@ export default function App() {
                   display: "inline-block",
                   marginTop: 12,
                   padding: "10px 24px",
-                  background: "var(--accent)",
+                  background: "var(--cta)",
                   color: "#fff",
                   textDecoration: "none",
-                  fontWeight: 700,
+                  fontWeight: 800,
                   textTransform: "uppercase",
-                  letterSpacing: 0.5,
+                  letterSpacing: 0.6,
                   borderRadius: 8,
+                  boxShadow: "0 4px 16px rgba(255, 122, 61, 0.35)",
                 }}
               >
                 Log in with Salesforce
