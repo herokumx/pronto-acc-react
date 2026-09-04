@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { PackageX, PackageMinus, RefreshCcw, UtensilsCrossed, Clock } from "lucide-react";
 import { PRODUCTS, HELP_TOPICS } from "./catalog.js";
 
@@ -79,6 +80,7 @@ function ProductCard({ p }) {
 }
 
 export default function Storefront({ userName = "there" }) {
+  const [isBusinessMode, setIsBusinessMode] = useState(false);
   const individual = PRODUCTS.filter((p) => p.channel === "b2c" || p.channel === "both");
   const bulk = PRODUCTS.filter((p) => p.channel === "b2b" || p.channel === "both");
 
@@ -177,36 +179,44 @@ export default function Storefront({ userName = "there" }) {
             spend limits.
           </div>
         </div>
-        <a href="#" style={buttonStyle}>
-          Switch to Business Account
-        </a>
+        <button
+          type="button"
+          onClick={() => setIsBusinessMode((v) => !v)}
+          style={{ ...buttonStyle, border: "none", cursor: "pointer" }}
+        >
+          {isBusinessMode ? "Switch back to All Products" : "Switch to Business Account"}
+        </button>
       </div>
 
-      <h2
-        style={{
-          fontSize: 18,
-          textTransform: "uppercase",
-          letterSpacing: 1,
-          color: "var(--primary)",
-          borderLeft: "3px solid var(--cta)",
-          paddingLeft: 10,
-          marginBottom: 14,
-        }}
-      >
-        Individual Favorites
-      </h2>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-          gap: 18,
-          marginBottom: 34,
-        }}
-      >
-        {individual.map((p) => (
-          <ProductCard key={p.id} p={p} />
-        ))}
-      </div>
+      {!isBusinessMode && (
+        <>
+          <h2
+            style={{
+              fontSize: 18,
+              textTransform: "uppercase",
+              letterSpacing: 1,
+              color: "var(--primary)",
+              borderLeft: "3px solid var(--cta)",
+              paddingLeft: 10,
+              marginBottom: 14,
+            }}
+          >
+            Individual Favorites
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+              gap: 18,
+              marginBottom: 34,
+            }}
+          >
+            {individual.map((p) => (
+              <ProductCard key={p.id} p={p} />
+            ))}
+          </div>
+        </>
+      )}
 
       <h2
         style={{
