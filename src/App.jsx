@@ -84,8 +84,9 @@ export default function App() {
         {config && config.authenticated && (
           <>
             <Storefront userName="Alex" />
-            {/* Floating mode docks Casey bottom-right with her own FAB, same as the
-                Multi-Framework reference screenshot's chat panel. */}
+            {/* mode="floating" builds our own branded trigger button + panel and only ever asks
+                ACC for its "inline" rendering inside that panel — see AgentforceConversation.jsx
+                for why we don't use ACC's own floating widget. */}
             <AgentforceConversation
               frontdoorUrl={config.frontdoorUrl}
               agentId={config.agentId}
