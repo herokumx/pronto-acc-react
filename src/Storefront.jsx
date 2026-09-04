@@ -184,7 +184,7 @@ export default function Storefront({ userName = "there" }) {
           onClick={() => setIsBusinessMode((v) => !v)}
           style={{ ...buttonStyle, border: "none", cursor: "pointer" }}
         >
-          {isBusinessMode ? "Switch back to All Products" : "Switch to Business Account"}
+          {isBusinessMode ? "Switch back to All Products" : "Switch to Group Ordering"}
         </button>
       </div>
 
