@@ -112,27 +112,22 @@ export default function AgentforceConversation({
           right: 24,
           bottom: 24,
           zIndex: 9999,
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          padding: "14px 22px",
-          borderRadius: 12,
+          width: 64,
+          height: 64,
+          padding: 0,
           border: "none",
-          background: "var(--cta)",
-          color: "#fff",
-          fontWeight: 800,
-          fontSize: 15,
-          letterSpacing: 0.2,
+          background: "transparent",
           cursor: "pointer",
-          boxShadow: "0 8px 28px rgba(255, 122, 61, 0.45)",
+          // The icon PNG already has its own white sticker-style outline; the drop-shadow
+          // adds depth so it lifts off the page instead of looking pasted on.
+          filter: "drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45))",
         }}
       >
         <img
-          src="/pronto-icon.png"
+          src="/pronto-fab-icon.png"
           alt=""
-          style={{ width: 22, height: 22, borderRadius: 6, display: "block" }}
+          style={{ width: "100%", height: "100%", display: "block" }}
         />
-        {open ? "Close" : "Need Help?"}
       </button>
 
       {mounted && (
@@ -140,7 +135,7 @@ export default function AgentforceConversation({
           style={{
             position: "fixed",
             right: 24,
-            bottom: 92,
+            bottom: 100,
             zIndex: 9998,
             width: 380,
             maxWidth: "calc(100vw - 48px)",
