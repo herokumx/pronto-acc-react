@@ -145,7 +145,11 @@ export default function AgentforceConversation({
             overflow: "hidden",
             boxShadow: "0 20px 60px rgba(0, 0, 0, 0.5)",
             border: "1px solid var(--panel-border)",
-            background: "var(--card)",
+            // ACC's inline conversation body doesn't paint its own opaque background — it
+            // assumes a light host background, and its default message text is dark. Our own
+            // dark theme behind it was causing dark-on-dark text; white here is what the SDK's
+            // default styling actually expects.
+            background: "#ffffff",
             // Hidden via visibility/opacity, never unmounted, so the ACC session survives
             // toggling closed and reopening doesn't reconnect from scratch.
             visibility: open ? "visible" : "hidden",
