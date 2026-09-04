@@ -35,6 +35,20 @@ export default function App() {
         }}
       >
         <img src="/pronto-logo.svg" alt="Pronto" style={{ height: 34 }} />
+        <span
+          style={{
+            fontSize: 10,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
+            padding: "4px 8px",
+            borderRadius: 6,
+            background: "var(--secondary)",
+            color: "var(--silver)",
+          }}
+        >
+          Customer View
+        </span>
       </header>
 
       <main style={{ flex: 1 }}>
