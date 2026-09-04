@@ -64,25 +64,41 @@ export default function App() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              minHeight: "calc(100vh - 64px)",
-              textAlign: "center",
+              minHeight: "calc(100vh - 67px)",
+              padding: 24,
             }}
           >
-            <div>
-              <h1 style={{ color: "var(--primary)" }}>Chat with Casey</h1>
-              <p style={{ color: "var(--muted)" }}>
-                Pronto Food Delivery's virtual assistant, powered by Agentforce.
+            <div
+              className="glass-panel"
+              style={{
+                width: "100%",
+                maxWidth: 380,
+                padding: "36px 32px",
+                textAlign: "center",
+              }}
+            >
+              <img
+                src="/pronto-icon.png"
+                alt=""
+                style={{ width: 64, height: 64, margin: "0 auto 18px", display: "block" }}
+              />
+              <h1 style={{ color: "var(--primary)", fontSize: 22, marginBottom: 6 }}>
+                Pronto Ordering
+              </h1>
+              <p style={{ color: "var(--muted)", fontSize: 14, marginBottom: 24 }}>
+                Order food, track deliveries, and get help from Casey — your Pronto virtual
+                assistant.
               </p>
               <a
                 href="/auth/login"
                 style={{
-                  display: "inline-block",
-                  marginTop: 12,
-                  padding: "10px 24px",
+                  display: "block",
+                  padding: "12px 24px",
                   background: "var(--cta)",
                   color: "#fff",
                   textDecoration: "none",
                   fontWeight: 800,
+                  fontSize: 13,
                   textTransform: "uppercase",
                   letterSpacing: 0.6,
                   borderRadius: 8,
@@ -91,6 +107,9 @@ export default function App() {
               >
                 Log in with Salesforce
               </a>
+              <p style={{ color: "var(--muted)", fontSize: 11, marginTop: 18, opacity: 0.7 }}>
+                Powered by Agentforce
+              </p>
             </div>
           </div>
         )}
