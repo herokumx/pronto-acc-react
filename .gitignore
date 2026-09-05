@@ -3,3 +3,6 @@ dist
 .env
 *.log
 .DS_Store
+
+# Resolve dependencies fresh on every install so ACC tracks latest.
+package-lock.json
